@@ -8,6 +8,13 @@ class GildedRose
     public $name = '';
     public $quality = '';
     public $sellIn = '';
+
+
+    public static $lookup = [
+        'Aged Brie' =>AgedBrie::class,
+        'Backstage passes to a TAFKAL80ETC concert'=>Backstage::class,
+        'Sulfuras, Hand of Ragnaros'=>Sulfuras::class,
+    ];
     
     public function __construct($name, $quality, $sellIn)
     {
@@ -18,6 +25,10 @@ class GildedRose
 
     public static function type($name, $quality, $sellIn)
     {
+        if(array_key_exists($name, self::$lookup))
+        {
+            return new self::$lookup[$name]($quality, $sellIn);
+        }
         return new static($name, $quality, $sellIn);
     }
 
@@ -28,59 +39,6 @@ class GildedRose
 
         
         switch($this->name){
-
-          case 'Aged Brie':
-
-            $this->quality +=1;
-            $this->sellIn -=1; 
-            
-            if($this->sellIn <=0){
-             
-                $this->quality +=1;  
-             }
-
-             if($this->quality >50){
-             
-                $this->quality=50;
-             }
-
-            return;
-            break;
-          
-          case 'Backstage passes to a TAFKAL80ETC concert':
-
-            $this->quality +=1;
-               
-            if($this->sellIn <=10){
-               
-                $this->quality +=1;  
-             }
-
-            if($this->sellIn <=5){
-               
-                $this->quality +=1;  
-             }
-
-            if($this->quality >50){
-               
-                $this->quality=50;
-             } 
-
-
-            if($this->sellIn <=0){
-               
-                $this->quality =0;  
-             }
-
-             $this->sellIn -=1;
-             
-            return;
-            break;
-          
-          case 'Sulfuras, Hand of Ragnaros':
-            return;
-            break;
-     
         default:
               $this->quality -=1;          
               $this->sellIn -=1;
@@ -90,8 +48,6 @@ class GildedRose
               $this->quality -=1; 
 
                }
-          
-         return;
             
             break;
 
