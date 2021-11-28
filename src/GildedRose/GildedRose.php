@@ -23,6 +23,21 @@ class GildedRose
 
     public function updateQuality()
     {
+           if($this->name == "Aged Brie" ){
+            $this->quality +=1;
+            $this->sellIn -=1; 
+             if($this->sellIn <=0){
+                $this->quality +=1;  
+             }
+             if($this->quality >50){
+                $this->quality=50;
+             }
+
+             return;
+           }
+
+
+
         if ($this->name != "Aged Brie" && $this->name != "Backstage passes to a TAFKAL80ETC concert") {
             if ($this->quality > 0) {
                 if ($this->name != "Sulfuras, Hand of Ragnaros") {
