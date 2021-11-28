@@ -23,8 +23,14 @@ class GildedRose
 
     public function updateQuality()
     {
-           if($this->name == "Aged Brie" ){
-            
+          
+        
+
+        
+        switch($this->name){
+
+          case 'Aged Brie':
+
             $this->quality +=1;
             $this->sellIn -=1; 
             
@@ -38,9 +44,11 @@ class GildedRose
                 $this->quality=50;
              }
 
-             return;
-           }elseif($this->name == "Backstage passes to a TAFKAL80ETC concert"){
-            
+            return;
+            break;
+          
+          case 'Backstage passes to a TAFKAL80ETC concert':
+
             $this->quality +=1;
                
             if($this->sellIn <=10){
@@ -66,23 +74,28 @@ class GildedRose
 
              $this->sellIn -=1;
              
-             return;
-
-           }elseif($this->name == "Sulfuras, Hand of Ragnaros"){
-               
             return;
+            break;
+          
+          case 'Sulfuras, Hand of Ragnaros':
+            return;
+            break;
+     
+        default:
+              $this->quality -=1;          
+              $this->sellIn -=1;
+        
+             if($this->sellIn <=0){
+           
+              $this->quality -=1; 
 
-           }else{
-
-            $this->quality -=1;          
-            $this->sellIn -=1;
+               }
+          
+         return;
             
-            if($this->sellIn <=0){
-               
-                $this->quality -=1;  
-             }
-              
-             return;
-           }
+            break;
+
+        }
+
     }
 }
