@@ -6,7 +6,7 @@ namespace GildedRose;
 class Sulfuras
 {
 
-    public $name = '';
+    
     public $quality = '';
     public $sellIn = '';
    

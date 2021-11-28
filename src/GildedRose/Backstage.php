@@ -6,7 +6,7 @@ namespace GildedRose;
 class Backstage
 {
 
-    public $name = '';
+   
     public $quality = '';
     public $sellIn = '';
    

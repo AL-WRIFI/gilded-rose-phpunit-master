@@ -6,7 +6,7 @@ namespace GildedRose;
 class AgedBrie
 {
 
-    public $name = '';
+  
     public $quality = '';
     public $sellIn = '';
    
